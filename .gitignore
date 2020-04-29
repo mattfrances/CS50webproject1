@@ -4,4 +4,4 @@ venv
 *pycache*
 *vscode*
 books.csv
-flask_session
+*flask_session*
