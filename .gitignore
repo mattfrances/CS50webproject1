@@ -5,3 +5,4 @@ venv
 *vscode*
 books.csv
 *flask_session*
+latest.dump
