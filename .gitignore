@@ -1,0 +1,7 @@
+createTables.sql
+import.py
+venv
+*pycache*
+*vscode*
+books.csv
+flask_session

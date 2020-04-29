@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% set active_page = "bookDetails" %}
+
+{% block title %}
+Book Details
+{% endblock title %}
+
+
+{% block body %}
+<div class="container">
+
+    {% if details %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">{{ details.title }}</h1>
+            <p class="lead">Author: {{ details.author }}</p>
+            <p class="lead">ISBN: {{ details.isbn }}</p>
+            <p class="lead">Goodread API Rating: {{ rating_average }}</p>
+        </div>
+    </div>
+
+    <div>
+        <h3>Reviews</h3>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form class="form-group" method="POST">
+            <textarea class="form-control" rows="2" id="comment" name="review"
+                placeholder="Enter a review here..."></textarea>
+
+            <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                    title="Excellent - 5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                    title="Great - 4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                    title="Good - 3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                    title="Ok - 2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                    title="Bad - 1 star"></label>
+            </fieldset>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    {% for review in reviews %}
+    <div class="list-group-item list-group-item-action">
+        <h4>{{ review[0] }}</h4>
+        <p>by {{ review[2] }}</p>
+        <p>Rating - {{ review[1] }} stars</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<h1>Sorry, there are no books with that ID.</h1>
+{% endif %}
+
+</div>
+{% endblock body %}
