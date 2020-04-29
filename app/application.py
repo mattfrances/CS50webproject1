@@ -6,7 +6,7 @@ from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from helpers import login_required, hash_password, verify_password
+from app.helpers import login_required, hash_password, verify_password
 
 app = Flask(__name__)
 
